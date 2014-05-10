@@ -124,17 +124,58 @@ class confmanager( object ):
 
 
 class routemanager( object ):
-
+    """
+    Example structure of a loaded rule
+    from config-file:
+        routes: {
+            '/web/example': {
+                'name': 'example',
+                'path': './modules/example.py'
+            },
+            '/web/foo/bar': {
+                'name': 'baz',
+                'path': './modules/foo/baz.py'
+            }
+        }
+    how it is stored in memory:
+    dict = {
+        'web': {
+            'example': {
+                'name': 'example',
+                'path': './modules/example.py',
+                'moduleinstance': <instance>
+            },
+            'foo' : {
+                'bar': {
+                    'name': 'baz',
+                    'path': './modules/baz.py',
+                    'moduleiinstance': <instance>
+                }
+            }
+        }
+    }
+    """
     def __init__( self ):
+        self.index = {}
         pass
 
     def _update( self, routes ):
-        self.routes = routes
-        return self
+        for r in routes:
+            current = self.index
+            for subr in r.split( '/' ):
+                if not current.has_key( subr ):
+                    current[ subr ] = {}
+                    pass
+                current = current[ subr ]
+                pass
+        return None 
 
-
-
-
+    def getinstance( self, route ):
+        """
+        receives a route as a string and returns a (singleton) instance
+        of the given module
+        """
+        pass
 
 
 
