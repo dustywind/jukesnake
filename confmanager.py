@@ -160,15 +160,26 @@ class routemanager( object ):
         pass
 
     def _update( self, routes ):
-        for r in routes:
-            current = self.index
-            for subr in r.split( '/' ):
-                if not current.has_key( subr ):
-                    current[ subr ] = {}
-                    pass
-                current = current[ subr ]
-                pass
+        for route in routes:
+            r = route.split( '/' )
+            self.__updatehelper( r, self.index )
         return None 
+
+    def __updatehelper( self, routelist, subindex ):
+        indexiter = subindex
+        for route in routelist:
+            if len( route ) == 0:
+                continue
+            if subindex.has_key( route ):
+                subindex = subindex[ route ]
+                continue
+            else
+                subindex = subindex[ route ]
+                pass
+            pass
+        # do some crazy stuff with the last node in subindex
+
+        return
 
     def getinstance( self, route ):
         """
@@ -176,6 +187,4 @@ class routemanager( object ):
         of the given module
         """
         pass
-
-
 
