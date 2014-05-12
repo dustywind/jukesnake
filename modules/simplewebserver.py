@@ -8,3 +8,7 @@ class simplewebserver( object ):
             print x, '\t', paramdict[x]
         pass
 
+    def narf( self ):
+        print 'narf'
+        return
+

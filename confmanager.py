@@ -28,7 +28,6 @@ class confmanager( object ):
             # TODO log exc + msg
             print e
         self.loadedroutes = {}
-        #self._loadconfig( path )
 
     def _readconfig(self, path ):
         """
@@ -45,11 +44,6 @@ class confmanager( object ):
         print conf
         return jconf
    
-    def _loadconfig( self ):
-        for route in self.routes:
-            self._loadmodule( route )
-        pass
-
     def _loadmodule( self, route ):
         """
         loads all items defined in the config, received by _readconfig
