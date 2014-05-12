@@ -2,7 +2,8 @@ from confmanager import confmanager
 import socket
 import threading
 import Queue
-import HTTPHelper
+from HTTPHelper import HTTPHelper
+import pdb
 
 
 class RequestHandler( threading.Thread ):
@@ -15,9 +16,9 @@ class RequestHandler( threading.Thread ):
         pass
 
     def run( self ):
+        print self.name, ' is running'
         while True:
             try:
-                print self.name, ' is awake'
                 # check for event
                 if self.stop.is_set():
                     break
@@ -28,7 +29,10 @@ class RequestHandler( threading.Thread ):
                 print c
 
                 # read from the socket
-                httpheader = HTTPHelper.HTTPHelper.readheaderfromconnection( c )
+                httpheader = HTTPHelper.readheaderfromconnection( c )
+                
+                print 'about to exec given method'
+                self.rm.execroute( httpheader.path )
 
                 # chose the matching route-module
                 # use the given function
@@ -100,8 +104,6 @@ if __name__ == '__main__':
     print 'bye :D'
 
     pass
-
-
 
 
 

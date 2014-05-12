@@ -1,4 +1,5 @@
 import os, imp, json, sys
+import pdb
 import types
 
 class moduleloader( object ):
@@ -50,7 +51,6 @@ class moduleloader( object ):
         return getroutemanager()._update( self.routes )
 
 
-
 class routemanager( object ):
 
     def __init__( self ):
@@ -71,33 +71,33 @@ class routemanager( object ):
     def execroute( self, route ):
         """
         """
+        #pdb.set_trace()
+
+        # ommit tainlint '/'
+        if route[-1] == '/':
+            route = route[:-1]
+            pass
+
         for i in self.index:
-            if route.startswith( i ):
+            if route.startswith( i['route'] ):
                 # found a matching route
                 # are there any subroutes?
-                route = route.replace( i, '' )
+                route = route.replace( i['route'], '' )
                 method = i['defaultmethod']
+
                 for sub in i['subroutes']:
                     if route.startswith( sub['path'] ):
+                        # get the method
                         method = sub['method']
+                        # adapt route (to determine parameters)
+                        route = route.replace( sub['path'], '' )
                         pass
                     pass
                 # exec method
                 param = route.split('/')
                 # get the instance and exec the given method
-                i['instance'].__getattribute__( method )()
+                i['instance'].__getattribute__( method )( param )
                 break
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -48,8 +48,6 @@ class HTTPHelper( object ):
             header.fields[ key ] = value
             pass
 
-        #pdb.set_trace()
-
         # check, if there is a payload
         # and read it - if neccessary
         if header.method == 'POST':
@@ -59,7 +57,7 @@ class HTTPHelper( object ):
         else:
             payload_length = 0
 
-        header.payload = msg.split( '\r\n\r\n' )[2]
+        header.payload = msg.split( '\r\n\r\n' )[1]
         if len( header.payload ) <  payload_length:
             # keep on reading the payload
             header.payload += conn.recv( payload_length - len( header.payload ) )

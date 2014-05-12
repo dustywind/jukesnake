@@ -1,5 +1,6 @@
 import os, imp, json, sys
 import types
+from moduleloader import moduleloader, routemanager
 
 class confmanager( object ):
 
@@ -44,36 +45,6 @@ class confmanager( object ):
         print conf
         return jconf
    
-    def _loadmodule( self, route ):
-        """
-        loads all items defined in the config, received by _readconfig
-        """
-        try:
-            conf = self.routes[ route ]
-            # try to load the module
-            module_name = conf['module']['name']
-            module_path = conf['module']['path']
-            
-            mod_name, file_ext = os.path.splitext( os.path.split( module_path )[ -1] )
-            if file_ext.lower() == '.py':
-                py_mod = imp.load_source( mod_name, module_path )
-            elif file_ext.lower() == '.pyc':
-                py_mod = imp.load_compiled( mod_name, module_path )
-            else:
-                raise Exception("Cannot handle module for route: " + route )
-            self.modules[route] =  py_mod
-        except Exception, e:
-            import traceback
-            traceback.print_exc( file=sys.stdout )
-            # TODO log error + msg
-        pass
-
-    def _getinstanceofmodule( self, module, classname, parameter):
-        instance = None
-        if hasattr( module, classname ):
-            instance = getattr( module, classname )( parameter )
-        return instance
-
     def _port( self ):
         if self.config.has_key( "port" ):
             port = self.config['port']
@@ -116,69 +87,4 @@ class confmanager( object ):
         return self._routemanagerinstance.update( self.routes )
 
 
-
-class routemanager( object ):
-    """
-    Example structure of a loaded rule
-    from config-file:
-        routes: {
-            '/web/example': {
-                'name': 'example',
-                'path': './modules/example.py'
-            },
-            '/web/foo/bar': {
-                'name': 'baz',
-                'path': './modules/foo/baz.py'
-            }
-        }
-    how it is stored in memory:
-    dict = {
-        'web': {
-            'example': {
-                'name': 'example',
-                'path': './modules/example.py',
-                'moduleinstance': <instance>
-            },
-            'foo' : {
-                'bar': {
-                    'name': 'baz',
-                    'path': './modules/baz.py',
-                    'moduleiinstance': <instance>
-                }
-            }
-        }
-    }
-    """
-    def __init__( self ):
-        self.index = {}
-        pass
-
-    def _update( self, routes ):
-        for route in routes:
-            r = route.split( '/' )
-            self.__updatehelper( r, self.index )
-        return None 
-
-    def __updatehelper( self, routelist, subindex ):
-        indexiter = subindex
-        for route in routelist:
-            if len( route ) == 0:
-                continue
-            if subindex.has_key( route ):
-                subindex = subindex[ route ]
-                continue
-            else
-                subindex = subindex[ route ]
-                pass
-            pass
-        # do some crazy stuff with the last node in subindex
-
-        return
-
-    def getinstance( self, route ):
-        """
-        receives a route as a string and returns a (singleton) instance
-        of the given module
-        """
-        pass
 

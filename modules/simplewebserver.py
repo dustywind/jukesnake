@@ -8,7 +8,10 @@ class simplewebserver( object ):
             print x, '\t', paramdict[x]
         pass
 
-    def narf( self ):
-        print 'narf'
+    def default( self, paramlist):
+        print 'at simplewebserver.default()\n'
+
+    def printimpressum( self, paramlist ):
+        print 'impressum'
         return
 
