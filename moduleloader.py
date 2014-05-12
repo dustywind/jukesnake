@@ -93,8 +93,15 @@ class routemanager( object ):
                         route = route.replace( sub['path'], '' )
                         pass
                     pass
+
                 # exec method
-                param = route.split('/')
+                if len(route) > 0:
+                    if route[1] == '/':
+                        param = route[1:].split('/')
+                    else:
+                        param = route.split('/')
+                else:
+                    param = []
                 # get the instance and exec the given method
                 i['instance'].__getattribute__( method )( param )
                 break
