@@ -103,6 +103,8 @@ class routemanager( object ):
                 else:
                     param = []
                 # get the instance and exec the given method
+                pdb.set_trace()
+
                 i['instance'].__getattribute__( method )( param )
                 break
 

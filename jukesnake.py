@@ -26,18 +26,19 @@ class RequestHandler( threading.Thread ):
                 # take a socket from the queue
                 c = connqueue.get( True, 2 )
 
-                print c
-
                 # read from the socket
                 httpheader = HTTPHelper.readheaderfromconnection( c )
+                
+                # chose the matching route-module
+                # use the given function
                 
                 print 'about to exec given method'
                 self.rm.execroute( httpheader.path )
 
-                # chose the matching route-module
-                # use the given function
+                c.close()
             except Exception, msg:
                 pass
+        print self.name, ' is shutting down'
         return
 
 
