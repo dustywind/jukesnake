@@ -6,3 +6,5 @@
 # created databases
 *.db
 
+# ignore vim-swap files
+*.swp

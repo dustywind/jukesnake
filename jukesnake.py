@@ -33,7 +33,9 @@ class RequestHandler( threading.Thread ):
                 # use the given function
                 
                 print 'about to exec given method'
-                self.rm.execroute( httpheader.path )
+                method, param = self.rm.getmethod( httpheader.path )
+                method( [c] + param )
+                #self.rm.execroute( httpheader.path )
 
                 c.close()
             except Exception, msg:

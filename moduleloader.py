@@ -68,11 +68,7 @@ class routemanager( object ):
             route[ 'instance' ] = moduleloader.getinstanceofmodule( module, route['module']['name'], {} )
         return self 
 
-    def execroute( self, route ):
-        """
-        """
-        #pdb.set_trace()
-
+    def getmethod( self, route ):
         # ommit tainlint '/'
         if route[-1] == '/':
             route = route[:-1]
@@ -102,11 +98,15 @@ class routemanager( object ):
                         param = route.split('/')
                 else:
                     param = []
-                # get the instance and exec the given method
-                pdb.set_trace()
 
-                i['instance'].__getattribute__( method )( param )
-                break
+                return i['instance'].__getattribute__( method ), param
+        return None
 
+    def execroute( self, route ):
+        """
+        """
+        #pdb.set_trace()
+        method, param = self.getmethod( route )
+        method( param )
 
 

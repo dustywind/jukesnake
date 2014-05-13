@@ -1,4 +1,4 @@
-
+import pdb
 
 class simplewebserver( object ):
 
@@ -9,6 +9,7 @@ class simplewebserver( object ):
         pass
 
     def default( self, paramlist):
+        pdb.set_trace()
         print 'at simplewebserver.default()\n'
 
     def printimpressum( self, paramlist ):
