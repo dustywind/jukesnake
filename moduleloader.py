@@ -65,7 +65,7 @@ class routemanager( object ):
         # add the instance of the class
         for route in self.index:
             module = moduleloader.loadmodule( route )
-            route[ 'instance' ] = moduleloader.getinstanceofmodule( module, route['module']['name'], {} )
+            route[ 'instance' ] = moduleloader.getinstanceofmodule( module, route['module']['name'], route['module']['param'] )
         return self 
 
     def getmethod( self, route ):
@@ -90,20 +90,15 @@ class routemanager( object ):
                         pass
                     pass
 
-                # exec method
-                if len(route) > 0:
-                    if route[1] == '/':
-                        param = route[1:].split('/')
-                    else:
-                        param = route.split('/')
-                else:
-                    param = []
-
+                # get the parameters
+                param = [ r for r in route.split( '/' ) if len(r) > 0 ]
+                # return ( function, parameter )
                 return i['instance'].__getattribute__( method ), param
         return None
 
-    def execroute( self, route ):
+    def __execroute( self, route ):
         """
+        DEPRECATED
         """
         #pdb.set_trace()
         method, param = self.getmethod( route )

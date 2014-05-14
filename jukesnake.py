@@ -2,7 +2,7 @@ from confmanager import confmanager
 import socket
 import threading
 import Queue
-from HTTPHelper import HTTPHelper
+from HTTPHelper import HTTPHelper, HTTPResponse
 import pdb
 
 
@@ -18,6 +18,7 @@ class RequestHandler( threading.Thread ):
     def run( self ):
         print self.name, ' is running'
         while True:
+            c = None
             try:
                 # check for event
                 if self.stop.is_set():
@@ -34,12 +35,20 @@ class RequestHandler( threading.Thread ):
                 
                 print 'about to exec given method'
                 method, param = self.rm.getmethod( httpheader.path )
-                method( [c] + param )
-                #self.rm.execroute( httpheader.path )
 
-                c.close()
+                x = method( c, param )
+
+                narf = HTTPResponse( HTTPHelper.HTTPStatusLine.OK )
+                narf.append( x )
+
+                narf.writeresponse( c )
+
             except Exception, msg:
                 pass
+            finally:
+                if c:
+                    c.close()
+                c = None
         print self.name, ' is shutting down'
         return
 
