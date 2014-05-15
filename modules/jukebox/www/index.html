@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jukeserver</title>
+
+    <script type='text/javascript' src='./scripts/jquery-2.1.1.js'></script>
+    <script type='text/javascript' src='./scripts/jukerest.js'></script>
+
+    <link rel='stylesheet' type='text/css' href='./styles/default.css' />
+</head>
+<body>
+<div id='jukebox'>
+
+<div id='controlpanel'>
+
+    <ul id='controlkeys'>
+        <li id='prev_wrapper'>
+            <div id='prev_button' class='controlkey_button'><div id='prev_symbol'></div>
+            </div>
+        </li>
+        <li id='play-pause_wrapper'>
+            <div id='play-pause_button' class='controlkey_button'><div></div>
+            </div>
+        </li>
+        <li id='next_wrapper'>
+            <div id='next_button' class='controlkey_button'><div></div>
+            </div>
+        </li>
+    </ul>
+
+    <ul id='additional_keys'>
+        <li id='loop_wrapper'></li>
+        <li id='shuffle_wrapper'></li>
+    </ul>
+
+    <div id='volumecontrol'>
+        <!-- Schieberegler -->
+        <input type='range'></input>
+    </div>
+
+</div><!-- end controlpanel -->
+
+<!-- /////////////////////////////////////////// -->
+
+<div id='musiccatalog'>
+
+</div><!-- end musiccatalog -->
+
+</div><!-- end jukebox -->
+</body>
+</html>

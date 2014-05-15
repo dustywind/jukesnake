@@ -78,7 +78,7 @@ class routemanager( object ):
             if route.startswith( i['route'] ):
                 # found a matching route
                 # are there any subroutes?
-                route = route.replace( i['route'], '' )
+                route = route.replace( i['route'], '', 1) # replace only the first occurence
                 method = i['defaultmethod']
 
                 for sub in i['subroutes']:

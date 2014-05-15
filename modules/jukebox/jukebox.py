@@ -8,12 +8,13 @@ class jukebox( object ):
         pass
 
     def default( self, connection, paramlist):
-        print 'at simplewebserver.default()\n'
 
         # reassamble the route to the file
         path = self.rootdir
         for p in paramlist:
             path = os.path.join( path, p )
+
+        print "following path was requested: ", path
         
         if os.path.isfile( path ):
             content = ''

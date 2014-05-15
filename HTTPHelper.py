@@ -36,7 +36,7 @@ class HTTPHelper( object ):
 
         for i, entry in enumerate( msg.split( '\r\n' ) ):
             if i == 0:
-                header.method, header.path, header.protocol = re.search('([\w]*) ([/\w.]*) ([/\w.]*)', msg ).groups()
+                header.method, header.path, header.protocol = re.search('([\w]*) ([/\w\-.]*) ([/\w.]*)', entry).groups()
                 continue
             elif len( entry ) == 0:
                 break
@@ -62,8 +62,6 @@ class HTTPHelper( object ):
 
             print header.payload
             pass
-
-        print 'done'
 
         return header
         
