@@ -4,8 +4,8 @@ from moduleloader import moduleloader, routemanager
 
 class confmanager( object ):
 
-    __defaultport = 1984
-    __defaulthost = '127.0.0.1'
+    __defaultport = 3000
+    __defaulthost = '0.0.0.0'
     __defaultmaxthreads = 5
     __defaultqueuesize = 0  # infinite space
 
