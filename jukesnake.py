@@ -59,7 +59,7 @@ if __name__ == '__main__':
     # create server-stuff
     # initialize sockets + pthreads
     bindaddr = (bindhost, bindport) = conf.host, conf.port
-    
+    bindaddr = ('0.0.0.0', bindport ) 
     print bindaddr
 
     lsock = socket.socket( socket.AF_INET, socket.SOCK_STREAM, 0 )

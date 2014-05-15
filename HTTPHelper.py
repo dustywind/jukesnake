@@ -91,7 +91,7 @@ class HTTPResponse( object ):
         response = 'HTTP/1.1 200 OK\r\n'
         response += 'Server: myawesomeserver\r\n'
         response += 'Connection: close\r\n'
-        response += 'Content-Type: image/jpeg\r\n'
+        #response += 'Content-Type: image/jpeg\r\n'
         # add another \r\n to signalise the data-part thingy
         response += '\r\n'
         response += self.message
