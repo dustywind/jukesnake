@@ -1,14 +1,22 @@
 
+body {
+    padding: 0;
+    margin: 0;
+}
+
 #controlpanel {
     width: 100%;
     height: 70px;
     position: absolute;
     background-color: #666666;
+    display: table;
+    text-align: center;
+
 }
 
 #controlpanel * {
-    display: inline-block;
-    position: relative;
+    display: table-cell;
+    vertical-align: center;
 }
 
 #controlkeys li {

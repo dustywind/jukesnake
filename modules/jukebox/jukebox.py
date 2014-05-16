@@ -8,6 +8,10 @@ class jukebox( object ):
         pass
 
     def default( self, connection, paramlist):
+        
+        #if there are no parameters at all, get /index.html
+        if len( paramlist ) == 0:
+            paramlist.insert( 0, 'index.html' )
 
         # reassamble the route to the file
         path = self.rootdir
