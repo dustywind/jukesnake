@@ -3,8 +3,12 @@
 <head>
     <title>Jukeserver</title>
 
-    <!--<script type='text/javascript' src='./scripts/jquery-2.1.1.js'></script>-->
+    <!--
+    <script type='text/javascript' src='./scripts/jquery-2.1.1.js'></script>
+    -->
+    <!--
     <script type='text/javascript' src='http://code.jquery.com/jquery-2.1.1.js'></script>
+    -->
     <script type='text/javascript' src='./scripts/jukerest.js'></script>
     <script type='text/javascript' src='./scripts/debug.js'></script>
 
@@ -17,15 +21,30 @@
 
     <ul id='controlkeys'>
         <li id='prev_wrapper'>
-            <div id='prev_button' class='controlkey_button'><div id='prev_symbol'></div>
+            <div id='prev_button' class='controlkey_button'>
+                <div id='prev_symbol'>
+                    <div class='prev_block'></div>
+                    <div class='prev_triangle'></div>
+                    <div class='prev_triangle'></div>
+                </div>
             </div>
         </li>
         <li id='play-pause_wrapper'>
-            <div id='play-pause_button' class='controlkey_button'><div></div>
+            <div id='play-pause_button' class='controlkey_button'>
+                <div id='play-pause_symbol'>
+                    <div class='play-pause_pause'>
+                        <div></div>
+                    </div>
+                </div>
             </div>
         </li>
         <li id='next_wrapper'>
             <div id='next_button' class='controlkey_button'><div></div>
+                <div id='next_symbol'>
+                <div class='next_triangle'></div>
+                <div class='next_triangle'></div>
+                <div class='next_block'</div>
+                </div>
             </div>
         </li>
     </ul>
@@ -44,8 +63,12 @@
 
 <!-- /////////////////////////////////////////// -->
 
-<div id='musiccatalog'>
+<div id='sidebar'>
 
+</div>
+
+<div id='musiccatalog' class='scrollable'>
+    <div class='narf'></div>
 </div><!-- end musiccatalog -->
 
 </div><!-- end jukebox -->

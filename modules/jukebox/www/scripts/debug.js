@@ -6,8 +6,9 @@
 
 setInterval(
     function() {
+        return;
         window.location.reload(true); 
-    }, 2000
+    }, 10000
 );
 
 

@@ -9,6 +9,7 @@ body {
     height: 70px;
     position: absolute;
     background-color: #666666;
+    /*background-color: #121212;*/
     display: table;
     text-align: center;
 
@@ -31,15 +32,49 @@ body {
     border-radius: 5px;
 }
 
+.prev_triangle {
+    width: 0;
+    height: 0;
+    border-right: 10px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
 
+.prev_block {
+    width: 5px;
+    height: 10px;
+    background: white;
+    border: 0 none;
+}
 
+.play-pause_play div {
+    border-left: 20px solid white;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
 
+.play-pause_pause div{
+    height: 40px;
+    width: 5px;
+    background: transparent;
+    border-left: 10px solid white;
+    border-right: 10px solid white;
+}
 
+.next_triangle{
+    width: 0;
+    height: 0;
+    border-left: 10px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
 
-
-
-
-
+.next_block {
+    width: 5px;
+    height: 10px;
+    background: white;
+    border: 0 none;
+}
 
 #volumecontrol {
     width: 200px;
@@ -48,15 +83,29 @@ body {
 }
 
 
+#sidebar {
+    float: left;
+    height: 300px;
+    width: 250px;
+    background: lightblue;
+}
 
 
+#musiccatalog {
+    width: 100px;
+    height: 200px;
+    background: lightgrey;
+}
 
+.narf {
+    width: 100%;
+    height: 300px;
+    background: red;
+}
 
-
-
-
-
-
+.scrollable {
+    overflow: auto;
+}
 
 
 
