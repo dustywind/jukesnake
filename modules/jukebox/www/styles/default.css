@@ -7,9 +7,8 @@ body {
 #controlpanel {
     width: 100%;
     height: 70px;
-    position: absolute;
-    background-color: #666666;
-    /*background-color: #121212;*/
+    position: relative;
+    background-color: #555555;
     display: table;
     text-align: center;
 
@@ -22,12 +21,17 @@ body {
 
 #controlkeys li {
     display: inline-block;
+    /*
+    background: #666666
+    */
 }
 
 .controlkey_button {
     width: 50px;
     height: 50px;
-    /*border: 1px solid black;*/
+    /*
+    background-color: #999999;
+    */
     background-color: #999999;
     border-radius: 5px;
 }
@@ -84,16 +88,23 @@ body {
 
 
 #sidebar {
+    position: relative;
     float: left;
-    height: 300px;
+    height: 600px;
     width: 250px;
-    background: lightblue;
+    background: #4086AA;
+}
+
+#playlists:before{
+    content: "Playlists:";
 }
 
 
+
+
 #musiccatalog {
-    width: 100px;
-    height: 200px;
+    width: auto;
+    height: auto;
     background: lightgrey;
 }
 
