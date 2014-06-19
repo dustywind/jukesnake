@@ -3,8 +3,28 @@ import os
 
 class jukebox( object ):
 
+    class PlayerStates( object ):
+        PLAY = 'play'
+        PAUSE = 'pause'
+
+        NEXT = 'next'
+        PREV = 'prev'
+
+        PLAY_AT = 'playat'
+
+        MEDIALIST = 'medialist'
+
+        SET_VOLUME = 'setvolume'
+
+
     def __init__( self, paramdict ):
+        """
+        Do some initial stuff
+        create a instance of the VLC-Player Wrapper
+        """
         self.rootdir = paramdict['rootdir']
+
+        # TODO VLC Wrapper instance
         pass
 
     def default( self, connection, paramlist):
@@ -31,20 +51,29 @@ class jukebox( object ):
             return "some directory content"
 
     def rest( self, connection, paramlist ):
-        """
-        TODO IMPLEMENT
-        actually this should be a restful api with lot's of methods
-        """
-        message = """<!DOCTYPE html>
-            <html>
-            <head><title>ECHO</title></head>
-            <body>
-            <ul>
-            """
-        for param in paramlist:
-            message += "<li>"
-            message += param
-            message += "</li>"
-            
-        message += "</ul></body></html>"
-        return message
+
+        if len( paramlist ) == 0:
+            return ""
+
+        if paramlist[0] == jukebox.PlayerStates.PLAY:
+            self.play()
+        elif paramlist[0] == jukebox.PlayerStates.PAUSE:
+            pass
+        elif paramlist[0] == jukebox.PlayerStates.NEXT:
+            pass
+        elif paramlist[0] == jukebox.PlayerStates.PREV:
+            pass
+        elif paramlist[0] == jukebox.PlayerStates.PLAY_AT:
+            pass
+        elif paramlist[0] == jukebox.PlayerStates.MEDIALIST:
+            pass
+        elif paramlist[0] == jukebox.PlayerStates.SET_VOLUME:
+            pass
+        pass
+
+    
+    def play( self ):
+        pass
+
+
+
